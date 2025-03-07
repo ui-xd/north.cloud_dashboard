@@ -1,10 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import gsap from "gsap";
-
-  onMount(() => {
-    gsap.registerPlugin(ScrollTrigger);
-  });
 </script>
 
-<div class="min-h-dvh bg-black text-7xl text-white">test</div>
+<div class="min-h-dvh bg-black text-7xl text-white">
+  <h1 class=" text-white font-regular uppercase">this is a test</h1>
+  <p>asdfasdfasdf</p>
+</div>
