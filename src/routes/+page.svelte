@@ -1,28 +1,28 @@
 <script>
   import { onMount } from "svelte";
-
+  import SideNav from "$lib/SideNav.svelte";
+  import SideBody from "$lib/SideBody.svelte";
+  import MainBody from "$lib/MainBody.svelte";
+  import TopNav from "$lib/TopNav.svelte";
   export let data;
 
   $: ({ apiData, error } = data);
 </script>
 
 <main class="bg-black h-dvh overflow-clip max-w-full">
-  <nav class="h-16 p-2 max-w-full max-h-16">
-    <div
-      class="flex justify-between items-center bg-zenix rounded-md h-full px-4"
-    >
-      <img src="/MainLogo_V2.svg" alt="Logo" class="h-5" />
-    </div>
-  </nav>
+  <TopNav />
 
   <div class="flex gap-2 px-2 h-[calc(100dvh-4.5rem)]">
-    <aside class="bg-zenix rounded-md p-4 w-16"></aside>
+    <SideNav />
     <div class="rounded-md flex-1 flex gap-2">
-      <div id="main-body" class="bg-zenix rounded-md p-4 flex-1 h-full">
-        <div class="p-6 bg-zenix text-white h-dvh">
+      <MainBody />
+      <SideBody on:click>
+        <div class=" text-white">
           <h1 class="mb-6">API Data</h1>
 
-          <div class="flex flex-col gap-4 overflow-y-scroll h-96">
+          <div
+            class="flex flex-col gap-4 overflow-y-scroll rounded-xs overflow-x-hidden h-96"
+          >
             {#if error}
               <div
                 class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"
@@ -82,11 +82,7 @@
             {/if}
           </div>
         </div>
-      </div>
-      <div
-        id="side-body"
-        class="bg-zenix rounded-md p-4 w-16 h-full md:w-1/4"
-      ></div>
+      </SideBody>
     </div>
   </div>
 </main>
