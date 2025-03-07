@@ -21,7 +21,7 @@
           <h1 class="mb-6">API Data</h1>
 
           <div
-            class="flex flex-col gap-4 overflow-y-scroll rounded-xs overflow-x-hidden h-96"
+            class="flex flex-col gap-4 overflow-y-scroll rounded-md overflow-x-hidden h-96 custom-scrollbar"
           >
             {#if error}
               <div
@@ -30,7 +30,7 @@
                 <p>Error: {error.message}</p>
               </div>
             {:else if apiData}
-              <div class="bg-zenix p-4 rounded shadow-sm">
+              <div class="bg-zenix/50 p-4 rounded shadow-sm">
                 <pre class="font-mono text-sm overflow-x-auto">{JSON.stringify(
                     apiData,
                     null,
