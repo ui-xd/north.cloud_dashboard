@@ -152,8 +152,6 @@
                     <col class="w-full sm:w-4/12" />
                     <col class="lg:w-4/12" />
                     <col class="lg:w-2/12" />
-                    <col class="lg:w-1/12" />
-                    <col class="lg:w-1/12" />
                   </colgroup>
                   <thead class="border-b border-white/10 text-sm/6 text-white">
                     <tr>
@@ -165,7 +163,7 @@
                       <th
                         scope="col"
                         class="hidden py-2 pr-8 pl-0 font-semibold sm:table-cell"
-                        >Commit</th
+                        >Details</th
                       >
 
                       <th
@@ -177,13 +175,9 @@
                   </thead>
                   <tbody class="divide-y divide-white/5">
                     {#each apiData?.savingsByCategory as category}
-                      <!-- <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-aurora rounded-full"></div>
-                    <p class="text-light text-sm">{category.service}</p>
-                    <p class="text-light text-sm">${category.savings}</p>
-                  </div> -->
-
-                      <tr>
+                      <tr
+                        class="hover:bg-zenix/30 transition-all duration-300 ease-in-out"
+                      >
                         <td class="py-4 pr-8 pl-4 sm:pl-6 lg:pl-8">
                           <div class="flex items-center gap-x-4">
                             <img
@@ -201,12 +195,16 @@
                         <td class="hidden py-4 pr-4 pl-0 sm:table-cell sm:pr-8">
                           <div class="flex gap-x-3">
                             <div class="font-mono text-sm/6 text-gray-400">
-                              2d89f0c8
+                              Amazon {category?.service}
                             </div>
                             <div
                               class="rounded-md bg-gray-700/40 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-white/10 ring-inset"
                             >
-                              main
+                              <img
+                                src="/aws.svg"
+                                alt=""
+                                class="size-4 fill-light"
+                              />
                             </div>
                           </div>
                         </td>
