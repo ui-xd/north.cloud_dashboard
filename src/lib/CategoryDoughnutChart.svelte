@@ -67,12 +67,9 @@
   };
 </script>
 
-<div class="chart-container" style="position: relative; height: 240px;">
+<div
+  class="chart-container flex items-start justify-start"
+  style="position: relative; height: 200px;"
+>
   <Doughnut data={chartData} options={chartOptions} />
 </div>
-
-<style>
-  .chart-container {
-    margin-top: 0.5rem;
-  }
-</style>
