@@ -1,7 +1,8 @@
-export const load = async ({ params, fetch }) => {
-  const API_BASE_URL = "https://north-case-api.vercel.app/api";
-  const API_TOKEN =
-    "8WT05LTmEmJBmBWHROWGYmjulMDp3EIa38thJTBzc0R4VAGBVMpsifRsXu3bYPz7";
+import { env } from "$env/dynamic/private";
+
+export const load = async ({ fetch }) => {
+  const API_BASE_URL = env.VITE_API_BASE_URL;
+  const API_TOKEN = env.VITE_API_TOKEN || "";
 
   const requestOptions = {
     headers: {
