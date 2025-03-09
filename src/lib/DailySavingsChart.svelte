@@ -116,15 +116,6 @@
   };
 </script>
 
-<div
-  class="chart-container"
-  style="position: relative; height:240px; width:100%"
->
+<div style="position: relative; height:240px; width:100%">
   <Bar data={chartData} options={chartOptions} />
 </div>
-
-<style>
-  .chart-container {
-    margin-top: 1rem;
-  }
-</style>

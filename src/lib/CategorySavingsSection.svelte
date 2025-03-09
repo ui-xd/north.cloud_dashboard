@@ -124,7 +124,7 @@
     >
       <div
         class="absolute inset-0 z-0
-        bg-[image:radial-gradient(rgba(255,255,255,0.05)_1px,transparent_0)]
+        bg-[image:radial-gradient(rgba(255,255,255,.05)_1px,black_0)]
         bg-[size:10px_10px] pointer-events-none"
       ></div>
 
@@ -134,7 +134,7 @@
             Category Distribution
           </h2>
           <button
-            class="aspect-square h-9 rounded-md border border-white/10 bg-zenix/30 hover:bg-zenix/50 transition-colors"
+            class="aspect-square h-9 rounded-md border border-white/10 transition-colors"
             on:click={toggleChart}
             aria-label="Return to table view"
           >

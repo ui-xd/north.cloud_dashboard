@@ -9,6 +9,10 @@
     "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
     "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco,
     "Courier New", Courier, monospace;
+
+  --scrollbar-color: #724cf9; /* Zenix purple */
+  --scrollbar-track-color: rgba(114, 76, 249, 0.05);
+  --scrollbar-width: 8px;
 }
 
 body {
@@ -24,6 +28,37 @@ pre,
 kbd,
 samp {
   font-family: var(--font-mono);
+}
+
+/* Global scrollbar styling */
+* {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-color) var(--scrollbar-track-color);
+}
+
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--scrollbar-color), white 10%);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: color-mix(in srgb, var(--scrollbar-color), black 10%);
 }
 
 @layer base {
