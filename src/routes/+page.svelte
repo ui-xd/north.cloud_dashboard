@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
   import SideNav from "$lib/SideNav.svelte";
   import SideBody from "$lib/SideBody.svelte";
@@ -56,6 +56,21 @@
       return () => clearInterval(interval);
     });
   });
+
+  function checkService(service: string) {
+    switch (true) {
+      case service.includes("EC2"):
+        return "ec2";
+      case service.includes("Lambda"):
+        return "lambda";
+      case service.includes("S3"):
+        return "s3";
+      case service.includes("RDS"):
+        return "rds";
+      default:
+        return "aws";
+    }
+  }
 </script>
 
 <main class="bg-zenix/20 h-dvh overflow-clip max-w-full">
@@ -132,13 +147,79 @@
               </h2>
 
               <div class="flex flex-col gap-4">
-                {#each apiData?.savingsByCategory as category}
-                  <div class="flex items-center gap-2">
+                <table class="w-full text-left whitespace-nowrap">
+                  <colgroup>
+                    <col class="w-full sm:w-4/12" />
+                    <col class="lg:w-4/12" />
+                    <col class="lg:w-2/12" />
+                    <col class="lg:w-1/12" />
+                    <col class="lg:w-1/12" />
+                  </colgroup>
+                  <thead class="border-b border-white/10 text-sm/6 text-white">
+                    <tr>
+                      <th
+                        scope="col"
+                        class="py-2 pr-8 pl-4 font-semibold sm:pl-6 lg:pl-8"
+                        >Service</th
+                      >
+                      <th
+                        scope="col"
+                        class="hidden py-2 pr-8 pl-0 font-semibold sm:table-cell"
+                        >Commit</th
+                      >
+
+                      <th
+                        scope="col"
+                        class="hidden py-2 pr-4 pl-0 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8"
+                        >Savings</th
+                      >
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-white/5">
+                    {#each apiData?.savingsByCategory as category}
+                      <!-- <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-aurora rounded-full"></div>
                     <p class="text-light text-sm">{category.service}</p>
                     <p class="text-light text-sm">${category.savings}</p>
-                  </div>
-                {/each}
+                  </div> -->
+
+                      <tr>
+                        <td class="py-4 pr-8 pl-4 sm:pl-6 lg:pl-8">
+                          <div class="flex items-center gap-x-4">
+                            <img
+                              src={`/${checkService(category?.service)}.svg`}
+                              alt=""
+                              class="size-8 fill-zenix"
+                            />
+                            <div
+                              class="truncate text-sm/6 font-medium text-white"
+                            >
+                              {category?.service}
+                            </div>
+                          </div>
+                        </td>
+                        <td class="hidden py-4 pr-4 pl-0 sm:table-cell sm:pr-8">
+                          <div class="flex gap-x-3">
+                            <div class="font-mono text-sm/6 text-gray-400">
+                              2d89f0c8
+                            </div>
+                            <div
+                              class="rounded-md bg-gray-700/40 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-white/10 ring-inset"
+                            >
+                              main
+                            </div>
+                          </div>
+                        </td>
+
+                        <td
+                          class="hidden text-aurora/90 py-4 pr-4 pl-0 text-right text-sm/6 sm:table-cell sm:pr-6 lg:pr-8"
+                        >
+                          <sup class="text-xs">$</sup>{category?.savings}
+                        </td>
+                      </tr>
+                    {/each}
+                  </tbody>
+                </table>
               </div>
 
               <!-- <CategoryDoughnutChart data={apiData?.savingsByCategory} /> -->
