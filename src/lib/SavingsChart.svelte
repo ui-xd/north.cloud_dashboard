@@ -82,7 +82,7 @@
 </script>
 
 <div
-  class="min-h-[300px] max-h-[50%]"
+  class="min-h-[260px] max-h-[50%]"
   role="figure"
   aria-label="Monthly savings trend chart"
   on:mouseenter={() => {
